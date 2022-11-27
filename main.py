@@ -4,10 +4,15 @@ import numpy as np
 
 
 def main(inputFileName):
-    print(inputFileName)
 
-    dataset = pd.read_csv(inputFileName)
-    print(dataset.to_string())
+    inputDF = pd.read_csv(inputFileName)
+    outputDF = pd.DataFrame()
+    columns = inputDF.columns
+
+    for column in columns:
+        outputDF[column] = inputDF[column].fillna(inputDF[column].mean())
+
+    outputDF.to_csv('output_'+inputFileName)
 
 
 try:
