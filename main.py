@@ -12,7 +12,7 @@ def main(inputFileName):
     for column in columns:
         outputDF[column] = inputDF[column].fillna(inputDF[column].mean())
 
-    outputDF.to_csv('output_'+inputFileName)
+    outputDF.to_csv('output_'+inputFileName, index=False)
 
 
 try:
