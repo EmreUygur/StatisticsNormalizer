@@ -3,6 +3,11 @@ import pandas as pd
 import numpy as np
 
 
+def fillColumns(df, column):
+    result = df[column].fillna(df[column].mean())
+    return result
+
+
 def main(inputFileName):
 
     inputDF = pd.read_csv(inputFileName)
@@ -10,7 +15,7 @@ def main(inputFileName):
     columns = inputDF.columns
 
     for column in columns:
-        outputDF[column] = inputDF[column].fillna(inputDF[column].mean())
+        outputDF[column] = fillColumns(inputDF, column)
 
     outputDF.to_csv('output_'+inputFileName, index=False)
 
