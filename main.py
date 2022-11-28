@@ -1,28 +1,27 @@
 import sys
 import pandas as pd
-import numpy as np
 
 
 def fillColumns(df, column):
-    result = df[column].fillna(df[column].mean())
-    return result
+
+    return df[column].fillna(df[column].mean())
+
+
+def getNormalizedDF(df):
+
+    return (df - df.min())/(df.max() - df.min())
 
 
 def main(inputFileName):
 
     inputDF = pd.read_csv(inputFileName)
-    outputDF = pd.DataFrame()
+    filledDF = pd.DataFrame()
     columns = inputDF.columns
 
     for column in columns:
-        outputDF[column] = fillColumns(inputDF, column)
+        filledDF[column] = fillColumns(inputDF, column)
 
-    outputDF.to_csv('output_'+inputFileName, index=False)
+    getNormalizedDF(filledDF).to_csv('output_'+inputFileName, index=False)
 
 
-try:
-    main(sys.argv[1])
-except IndexError:
-    print('Please enter a csv file name')
-except Exception as error:
-    print(f'Error: {error}')
+main(sys.argv[1])
