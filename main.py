@@ -14,14 +14,14 @@ def getNormalizedDF(df):
 
 def main(inputFileName):
 
-    inputDF = pd.read_excel(inputFileName)
+    inputDF = pd.read_csv(inputFileName)
     filledDF = pd.DataFrame()
     columns = inputDF.columns
 
     for column in columns:
         filledDF[column] = fillColumns(inputDF, column)
 
-    getNormalizedDF(filledDF).to_excel('output_'+inputFileName, index=False)
+    getNormalizedDF(filledDF).to_csv('output_'+inputFileName, index=False)
 
 
 main(sys.argv[1])
