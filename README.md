@@ -11,9 +11,9 @@ This python script is designed to filling empty values on excel file by aggregat
 ## To Run
 
 ```sh
-python .\main.py <filename.excel>
+python .\main.py <filename.xlsx>
 ```
 
 ## Export
 
-If the process successfully finished it will generate a file formatted like `output_yourfilename.excel`
+If the process successfully finished it will generate a file formatted like `output_filename.xlsx`
