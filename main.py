@@ -21,7 +21,8 @@ def main(inputFileName):
     for column in columns:
         filledDF[column] = fillColumns(inputDF, column)
 
-    getNormalizedDF(filledDF).to_csv('output_'+inputFileName, index=False)
+    getNormalizedDF(filledDF.transpose()).to_csv(
+        'output_'+inputFileName, index=False, header=False)
 
 
 main(sys.argv[1])
