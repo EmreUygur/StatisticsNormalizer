@@ -21,8 +21,11 @@ def main(inputFileName):
     for column in columns:
         filledDF[column] = fillColumns(inputDF, column)
 
-    getNormalizedDF(filledDF.transpose()).to_csv(
-        'output_'+inputFileName, index=False, header=False)
+    filledDF.to_excel('output_'+inputFileName+'.xlsx',
+                      index=False, header=False)
+
+    getNormalizedDF(filledDF.transpose()).to_excel(
+        'output_normalized-and-trasnpozed_'+inputFileName+'.xlsx', index=False, header=False)
 
 
 main(sys.argv[1])
